@@ -122,3 +122,42 @@ h1 em { letter-spacing: -.035em; }
   .followup-study .graphs { gap:20px; }
   .followup-study .intro { font-size:1.0625rem; }
 }
+
+.return-path {
+  position: relative;
+  width: 50%;
+  margin: 14px 0 0 37.5%;
+  padding: 8px 12px;
+
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--teal);
+
+  border: 1px solid currentColor;
+  border-top: 0;
+}
+
+/* Remove the original arrow beside the text. */
+.return-path span {
+  display: none;
+}
+
+/* Arrowhead at the top of the left vertical line. */
+.return-path::before {
+  content: "";
+  position: absolute;
+  left: -4.5px;
+  top: -2px;
+
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 6px solid currentColor;
+}
+
+/* Keep it within the page on smaller screens. */
+@media (max-width: 800px) {
+  .return-path {
+    width: 100%;
+    margin-left: 0;
+  }
+}
