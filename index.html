@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A research platform for exploring when automated vehicles should explain their actions, how explanations adapt, and when a vehicle should stay silent. AutomotiveUI 2026 Work-in-Progress, IT:U.">
+  <meta name="theme-color" content="#572451">
+  <title>Adaptive Explanations in Automated Vehicles · IT:U</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./content.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="brand-stripe" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="identity" href="#overview" aria-label="IT:U adaptive explanations, overview"><span class="wordmark">IT:U</span><span class="identity-divider"></span><span>Adaptive<br><strong>explanations</strong></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="main-nav" aria-label="Main navigation">
+      <a href="#platform">Platform</a><a href="#incidents">Incidents</a><a href="#evidence">Evidence</a><a class="nav-paper" href="#paper">Read the paper <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="main">
+    <section id="overview" class="hero section-wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">AutomotiveUI 2026 <span></span> Work-in-Progress</p>
+        <h1 id="hero-title">When should a vehicle <em>explain itself?</em></h1>
+        <p class="hero-intro">And when should it stay silent?</p>
+        <p class="hero-description">We explore how automated vehicles can adapt their explanations to the driving situation and the passenger’s preferences. A motion-based VR simulator makes these interactions repeatable and inspectable.</p>
+        <div class="hero-actions"><a class="button primary" href="#incidents">Explore the incidents <span aria-hidden="true">↓</span></a><a class="text-link" href="#paper">Read the manuscript <span aria-hidden="true">↗</span></a></div>
+        <div class="author-line"><strong>Philipp Asteriou, Ambika Shahu,<br>Andreas Riegler &amp; Philipp Wintersberger</strong><span>IT:U Interdisciplinary Transformation University Austria</span></div>
+      </div>
+      <figure class="hero-figure">
+        <div class="image-label">Inside the simulation</div>
+        <img src="./assets/images/blocked-road.webp" width="1851" height="1041" alt="Passenger view of an automated vehicle stopped behind traffic, with a truck blocking the road and an explanation on the dashboard." fetchpriority="high">
+        <figcaption><span class="figure-index">01</span><div><strong>A blocked road. A decision to stop.</strong><p>The vehicle explains why it cannot pass the truck in dense traffic.</p></div></figcaption>
+      </figure>
+    </section>
+    <div class="research-line section-wrap"><span>RESEARCH FOCUS</span><p>Explanation timing. Passenger preferences. The decision to remain silent.</p><span class="scope-label">Prototype &amp; design space</span></div>
+
+    <section id="platform" class="section-wrap section" aria-labelledby="platform-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / The research platform</p><h2 id="platform-title">A controlled setting.<br>A changing conversation.</h2></div><p>Explanations can help passengers understand vehicle behaviour [1, 2]. Our platform explores how communication can change across repeated encounters, instead of treating information needs as fixed [3].</p></div>
+      <div class="platform-grid">
+        <figure class="platform-photo"><img src="./assets/images/simulator.webp" width="1674" height="1128" alt="A participant wearing a VR headset in the motion-based driving simulator." loading="lazy"><figcaption>Motion-based VR simulator with a passenger-focused automated-driving experience.</figcaption></figure>
+        <div class="platform-details">
+          <article><span class="detail-number">01</span><div><h3>Repeatable driving events</h3><p>A Unity-based environment supports scripted incidents in urban and highway settings. Researchers can vary criticality and traffic density while keeping vehicle behaviour repeatable.</p></div></article>
+          <article><span class="detail-number">02</span><div><h3>Explanations that can adapt</h3><p>A large language model receives structured scenario information, explanation constraints, and preference history. It returns content, delivery mode, and tone instructions.</p></div></article>
+          <article><span class="detail-number">03</span><div><h3>Feedback that carries forward</h3><p>Passengers can ask to keep, reduce, or omit similar explanations, and adjust detail and tone. The platform stores that feedback with the event and the system’s output.</p></div></article>
+        </div>
+      </div>
+      <div class="loop-section">
+        <div class="loop-heading"><h3>The adaptation loop</h3><p>Context and explicit feedback shape the next explanation.</p></div>
+        <ol class="flow"><li><span>01</span><h4>Driving context</h4><p>Road, traffic, criticality, and the event itself.</p></li><li><span>02</span><h4>Explanation pipeline</h4><p>Scenario facts, constraints, and preference history.</p></li><li><span>03</span><h4>Delivery decision</h4><p>Audio, text, both, or suppression.</p></li><li><span>04</span><h4>Passenger feedback</h4><p>Frequency, detail, and tone for similar situations.</p></li></ol>
+        <div class="return-path"><span aria-hidden="true">↶</span> Stored feedback returns to the pipeline for later incidents</div>
+        <p class="constraint-note"><strong>Prototype constraints</strong> Use supplied scenario facts. Avoid jargon and unsupported speculation. Limit message length. Log the output for inspection.</p>
+      </div>
+    </section>
+
+    <section id="incidents" class="incident-section section" aria-labelledby="incidents-title">
+      <div class="section-wrap">
+        <div class="section-heading"><div><p class="eyebrow">02 / Incident library</p><h2 id="incidents-title">The event behind<br>the explanation.</h2></div><p>An <strong>incident</strong> is a scripted traffic event that prompts a vehicle response, such as braking, changing lanes, or stopping. It does not necessarily mean a collision or an emergency.</p></div>
+        <div class="incident-selector" id="incident-selector" role="group" aria-label="Choose a driving incident"></div>
+        <article class="incident-view" id="incident-view" aria-labelledby="incident-title">
+          <div><div id="incident-media" class="incident-media"></div><p class="media-caption" id="media-caption"></p></div>
+          <div class="incident-copy"><p class="eyebrow" id="incident-index"></p><h3 id="incident-title"></h3><div class="context-tags" id="incident-tags"></div><div class="event-description"><h4>What happens</h4><p id="incident-event"></p><h4>How the vehicle responds</h4><p id="incident-response"></p></div><blockquote id="incident-explanation"></blockquote><p class="incident-source" id="incident-source"></p></div>
+        </article>
+        <noscript><div class="no-script"><h3>A blocked road</h3><p>A truck blocks the road. The automated vehicle stops because dense traffic prevents passing. Enable JavaScript to browse the other incidents and load videos.</p><img src="./assets/images/blocked-road.webp" alt="Blocked-road incident in the simulator." width="1851" height="1041"></div></noscript>
+        <div class="feedback-detail"><div><p class="eyebrow">After the event</p><h3>“Less in a situation like this.”</h3><p>The passenger’s feedback becomes part of the interaction history. The same event can lead to a shorter message, a different delivery mode, or no explanation in a later, similar situation.</p><p class="muted">How long preferences should persist, and when the system should revisit them, remain open research questions.</p></div><figure><img src="./assets/images/feedback.webp" alt="Feedback interface with controls for explanation frequency, level of detail, and empathy." width="1565" height="1128" loading="lazy"><figcaption>The current in-vehicle feedback interface.</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section id="evidence" class="section-wrap section" aria-labelledby="evidence-title">
+      <div class="section-heading"><div><p class="eyebrow">03 / Evidence &amp; research directions</p><h2 id="evidence-title">A platform to investigate.<br>Questions still to answer.</h2></div><p>This work contributes a research instrument, an adaptive explanation pipeline, and an initial design space. The manuscript does not report an empirical evaluation or demonstrated improvements in trust.</p></div>
+      <div id="charts" class="charts"></div>
+      <div id="results-empty" class="results-empty"><span class="result-symbol" aria-hidden="true">∿</span><div><h3>Empirical evaluation is planned</h3><p>Study graphs and quantitative results are not yet available for this work. Future studies will compare proactive, on-demand, and hybrid explanation strategies.</p></div></div>
+      <div class="design-table-wrap"><h3>What can be explored?</h3><p class="muted">The design space is broader than the current implementation.</p><table class="design-table"><caption class="sr-only">Current implementation and possible research extensions</caption><thead><tr><th scope="col">Dimension</th><th scope="col">Current platform</th><th scope="col">Further investigation</th></tr></thead><tbody><tr><th scope="row">Frequency</th><td>Keep, reduce, or omit explanations in similar situations</td><td>When to reintroduce explanations after a preference for silence</td></tr><tr><th scope="row">Detail &amp; tone</th><td>Explicit feedback adjusts detail and emotional expression</td><td>How preferences change with familiarity and context</td></tr><tr><th scope="row">Delivery</th><td>Audio, text, both, or suppression</td><td>Visual overlays, ambient cues, and on-demand controls</td></tr><tr><th scope="row">Personalization</th><td>Scenario context and stored explicit feedback</td><td>Gaze, head orientation, and physiological signals</td></tr><tr><th scope="row">Safety &amp; control</th><td>Scenario constraints and inspectable output logs</td><td>Validated override rules, uncertainty communication, and preference resets</td></tr></tbody></table></div>
+      <div class="questions"><article><span>01</span><h3>How should silence feel?</h3><p>Should a passenger know that an explanation was suppressed, or would that become another interruption?</p></article><article><span>02</span><h3>When should safety take priority?</h3><p>When should a change in context override an earlier preference for fewer explanations?</p></article><article><span>03</span><h3>Who controls adaptation?</h3><p>How should passengers request an explanation, revise a preference, or reset the system’s behaviour?</p></article></div>
+      <aside class="research-caveat"><strong>A prototyping tool</strong><p>The LLM supports exploration of possible explanation policies. It is not a validated communication system for production vehicles. Incorrect or misleading explanations remain a concern [4], and a model-generated rationale is not proof of why the model made a decision.</p></aside>
+    </section>
+
+    <section id="paper" class="paper-section section" aria-labelledby="paper-title"><div class="section-wrap">
+      <div class="section-heading"><div><p class="eyebrow">04 / The full paper</p><h2 id="paper-title">The details, in full.</h2></div><div class="paper-actions"><a class="button primary" href="./assets/documents/paper.pdf" target="_blank" rel="noopener">Open PDF <span aria-hidden="true">↗</span></a><a class="button secondary" href="./assets/documents/paper.pdf" download>Download paper <span aria-hidden="true">↓</span></a></div></div>
+      <div class="paper-meta"><div><h3>Exploring the Design Space of Adaptive Explanations in Automated Vehicles</h3><p>AutomotiveUI 2026 Work-in-Progress · 8 pages · Submitted manuscript</p></div><a class="text-link" href="./assets/documents/poster-a0.pdf" target="_blank" rel="noopener">View the A0 poster ↗</a></div>
+      <div class="pdf-shell"><div class="pdf-toolbar"><span><span class="pdf-dot" aria-hidden="true"></span> Research manuscript</span><span>PDF</span></div><object class="pdf-viewer" data="./assets/documents/paper.pdf#view=FitH" type="application/pdf" aria-label="Full eight-page research paper"><div class="pdf-fallback"><img src="./assets/images/paper-page.png" alt="First page of the research manuscript." width="506" height="655" loading="lazy"><p>Your browser cannot display this PDF here.</p><a class="button primary" href="./assets/documents/paper.pdf" target="_blank" rel="noopener">Open the full paper ↗</a></div></object><div class="pdf-mobile"><img src="./assets/images/paper-page.png" alt="Preview of the research manuscript." width="506" height="655" loading="lazy"><a class="button primary" href="./assets/documents/paper.pdf" target="_blank" rel="noopener">Read the full PDF ↗</a></div></div>
+    </div></section>
+
+    <section class="section-wrap references section" aria-labelledby="references-title"><div><p class="eyebrow">Further reading</p><h2 id="references-title">Selected references</h2><p>The full bibliography is included in the paper.</p></div><ol><li id="ref-1"><span>Koo et al. · 2015</span><a href="https://doi.org/10.1007/s12008-014-0227-2" target="_blank" rel="noopener">Why did my car just do that? Explaining semi-autonomous driving actions to improve driver understanding, trust, and performance.</a><small>International Journal on Interactive Design and Manufacturing, 9, 269–275.</small></li><li id="ref-2"><span>Kim et al. · 2023</span><a href="https://doi.org/10.1145/3610886" target="_blank" rel="noopener">What and When to Explain? On-road Evaluation of Explanations in Highly Automated Vehicles.</a><small>PACM IMWUT, 7(3), Article 104.</small></li><li id="ref-3"><span>Wintersberger et al. · 2020</span><a href="https://doi.org/10.1145/3409120.3410659" target="_blank" rel="noopener">Explainable Automation: Personalized and Adaptive UIs to Foster Trust and Understanding of Driving Automation Systems.</a><small>AutomotiveUI ’20, 252–261.</small></li><li id="ref-4"><span>Sadeghi et al. · 2024</span><a href="https://doi.org/10.1145/3627043.3659573" target="_blank" rel="noopener">Explaining the Unexplainable: The Impact of Misleading Explanations on Trust in Unreliable Predictions for Hardly Assessable Tasks.</a><small>UMAP ’24, 36–46.</small></li></ol></section>
+  </main>
+  <footer class="site-footer"><div class="section-wrap footer-inner"><div><span class="wordmark">IT:U</span><p>Interdisciplinary Transformation<br>University Austria</p></div><div><strong>Let’s discuss adaptive explanations.</strong><a href="mailto:philipp.asteriou@it-u.at">philipp.asteriou@it-u.at ↗</a></div><div class="footer-meta"><span>AutomotiveUI 2026</span><span>Gothenburg, Sweden</span><a href="#overview">Back to top ↑</a></div></div></footer>
+</body>
+</html>
