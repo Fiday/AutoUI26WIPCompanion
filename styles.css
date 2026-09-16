@@ -85,3 +85,40 @@ h1 em { letter-spacing: -.035em; }
 
 .hero h1 em { display: inline-block; }
 @media (max-width: 580px) { .hero .eyebrow span:empty { display: none; } }
+
+/* Unpublished follow-up: scoped styles preserve the existing poster companion. */
+.followup-study { border-top: 1px solid var(--line); }
+.followup-study > h2 { max-width: 900px; margin: 15px 0 22px; }
+.followup-study .intro { max-width: 830px; font-size: 1.2rem; color: #515461; }
+.followup-study p { margin: 12px 0; }
+.followup-study > h3 { font-size: 1.5rem; line-height: 1.3; margin: 38px 0 16px; }
+.followup-study h4 { font-size: 1.06rem; line-height: 1.45; margin: 0 0 10px; }
+.followup-study a { color: var(--plum); }
+.followup-study .note { background: var(--soft); border-left: 3px solid var(--plum); padding: 18px 22px; margin: 25px 0; }
+.followup-study .method, .followup-study .findings { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.followup-study .method article, .followup-study .findings article { padding: 20px 0; border-top: 2px solid var(--plum); }
+.followup-study .method p, .followup-study .findings p { color: var(--muted); }
+.followup-study .graphs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; margin: 30px 0; }
+.followup-study .graphs figure { margin: 0; min-width: 0; border: 1px solid var(--line); border-radius: 5px; padding: 18px 10px; }
+.followup-study .graphs svg { display: block; width: 100%; height: auto; }
+.followup-study .graphs figcaption { font-size: .875rem; color: var(--muted); padding: 0 15px 8px; }
+.followup-study .table-scroll { overflow: auto; }
+.followup-study table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .9375rem; }
+.followup-study th, .followup-study td { text-align: left; border-bottom: 1px solid var(--line); padding: 12px; }
+.followup-study th { background: var(--soft); color: var(--plum-dark); }
+.followup-study details { border-block: 1px solid var(--line); padding: 20px 0; margin-top: 30px; }
+.followup-study summary { color: var(--plum); font-weight: 600; cursor: pointer; }
+.followup-study .source { font-size: .875rem; color: var(--muted); margin-top: 35px; border-top: 1px solid var(--line); padding-top: 20px; }
+@media(max-width:900px) {
+  .menu-button { display:flex; align-items:center; gap:10px; background:white; border:1px solid var(--line); padding:9px 12px; min-height:44px; font-size:.875rem; border-radius:3px; flex-shrink:0; }
+  .site-header nav { display:none; position:absolute; left:0; right:0; top:100%; background:white; border-bottom:1px solid var(--line); padding:16px 20px; flex-direction:column; align-items:stretch; gap:3px; box-shadow:0 10px 20px #0001; }
+  .site-header nav.open { display:flex; }
+  .site-header nav a { padding:10px 12px; }
+  .nav-paper { margin-top:7px; }
+}
+@media(max-width:760px) {
+  .followup-study .method, .followup-study .findings, .followup-study .graphs { grid-template-columns:minmax(0,1fr); }
+  .followup-study .method, .followup-study .findings { gap:8px; }
+  .followup-study .graphs { gap:20px; }
+  .followup-study .intro { font-size:1.0625rem; }
+}

@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#572451">
   <title>Adaptive Explanations in Automated Vehicles · IT:U</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260916-3">
+  <link rel="stylesheet" href="./styles.css?v=20260916-study">
   <script src="./content.js" defer></script>
   <script src="./app.js" defer></script>
 </head>
@@ -18,7 +18,7 @@
     <a class="identity" href="#overview" aria-label="IT:U adaptive explanations, overview"><span class="wordmark">IT:U</span><span class="identity-divider"></span><span>Adaptive<br><strong>explanations</strong></span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
     <nav id="main-nav" aria-label="Main navigation">
-      <a href="#platform">Platform</a><a href="#incidents">Incidents</a><a href="#evidence">Evidence</a><a class="nav-paper" href="#paper">Read the paper <span aria-hidden="true">↗</span></a>
+      <a href="#platform">Platform</a><a href="#incidents">Incidents</a><a href="#evidence">Evidence</a><a href="#study">Study</a><a class="nav-paper" href="#paper">Read the paper <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
   <main id="main">
@@ -71,16 +71,352 @@
     </section>
 
     <section id="evidence" class="section-wrap section" aria-labelledby="evidence-title">
-      <div class="section-heading"><div><p class="eyebrow">03 / Evidence &amp; research directions</p><h2 id="evidence-title">A platform to investigate.<br>Questions still to answer.</h2></div><p>This work contributes a research instrument, an adaptive explanation pipeline, and an initial design space. The manuscript does not report an empirical evaluation or demonstrated improvements in trust.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">03 / Evidence &amp; research directions</p><h2 id="evidence-title">A platform to investigate.<br>Questions still to answer.</h2></div><p>The AutoUI work-in-progress paper contributes a research instrument, an adaptive explanation pipeline, and an initial design space. Its manuscript does not report an empirical evaluation; the separate follow-up study below adds exploratory experimental findings.</p></div>
       <div id="charts" class="charts"></div>
-      <div id="results-empty" class="results-empty"><span class="result-symbol" aria-hidden="true">∿</span><div><h3>Empirical evaluation is planned</h3><p>Study graphs and quantitative results are not yet available for this work. Future studies will compare proactive, on-demand, and hybrid explanation strategies.</p></div></div>
+      <div id="results-empty" class="results-empty"><span class="result-symbol" aria-hidden="true">∿</span><div><h3>From prototype to follow-up study</h3><p>A separate, unpublished study examined explanation provision and passenger preferences over three sessions. <a href="#study">Explore the study and its findings →</a></p></div></div>
       <div class="design-table-wrap"><h3>What can be explored?</h3><p class="muted">The design space is broader than the current implementation.</p><table class="design-table"><caption class="sr-only">Current implementation and possible research extensions</caption><thead><tr><th scope="col">Dimension</th><th scope="col">Current platform</th><th scope="col">Further investigation</th></tr></thead><tbody><tr><th scope="row">Frequency</th><td>Keep, reduce, or omit explanations in similar situations</td><td>When to reintroduce explanations after a preference for silence</td></tr><tr><th scope="row">Detail &amp; tone</th><td>Explicit feedback adjusts detail and emotional expression</td><td>How preferences change with familiarity and context</td></tr><tr><th scope="row">Delivery</th><td>Audio, text, both, or suppression</td><td>Visual overlays, ambient cues, and on-demand controls</td></tr><tr><th scope="row">Personalization</th><td>Scenario context and stored explicit feedback</td><td>Gaze, head orientation, and physiological signals</td></tr><tr><th scope="row">Safety &amp; control</th><td>Scenario constraints and inspectable output logs</td><td>Validated override rules, uncertainty communication, and preference resets</td></tr></tbody></table></div>
       <div class="questions"><article><span>01</span><h3>How should silence feel?</h3><p>Should a passenger know that an explanation was suppressed, or would that become another interruption?</p></article><article><span>02</span><h3>When should safety take priority?</h3><p>When should a change in context override an earlier preference for fewer explanations?</p></article><article><span>03</span><h3>Who controls adaptation?</h3><p>How should passengers request an explanation, revise a preference, or reset the system’s behaviour?</p></article></div>
       <aside class="research-caveat"><strong>A prototyping tool</strong><p>The LLM supports exploration of possible explanation policies. It is not a validated communication system for production vehicles. Incorrect or misleading explanations remain a concern [4], and a model-generated rationale is not proof of why the model made a decision.</p></aside>
     </section>
 
+    <section id="study" class="followup-study section section-wrap" aria-labelledby="study-title">
+<p class="eyebrow">04 / Unpublished follow-up study</p>
+<h2 id="study-title">Fewer explanations.<br>More useful information.</h2>
+<p class="intro">A follow-up simulator study examined how explanation preferences change across repeated drives. The system became more selective about when it explained, while participants increasingly requested more detail in the explanations they received.</p>
+<div class="note"><strong>Relationship to the AutoUI paper</strong><p>These exploratory findings come from a separate, unpublished follow-up manuscript. They were not reported in the AutoUI work-in-progress paper.</p></div>
+<h3>Study design</h3>
+<div class="method"><article><h4>11 participants · 3 sessions</h4><p>Participants experienced automated driving as passengers in a motion-based VR simulator on three consecutive days.</p></article><article><h4>8 incidents per session</h4><p>Each drive covered all combinations of low/high criticality, sparse/dense traffic, and urban/highway roads. Concrete incidents differed between sessions.</p></article><article><h4>Feedback after explanations</h4><p>Passengers rated frequency, detail, and empathic tone. Trust was measured after each drive; the final session included an interview.</p></article></div>
+<p>Session 1 provided an explanation after every incident. Sessions 2 and 3 used accumulated feedback to decide whether and how to explain. There were 264 incident opportunities, 227 presented explanations, and 37 suppressed explanations.</p>
+<h3>When to explain and what to say changed differently</h3>
+<div class="graphs"><figure><svg role="img" aria-label="Explanations presented: Session 1, 100 percent, Session 2, 80.7 percent, Session 3, 77.3 percent" xmlns:xlink="http://www.w3.org/1999/xlink" width="460.8pt" height="295.2pt" viewBox="0 0 460.8 295.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-16T12:00:48.088009</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="study-graph-1-figure_1">
+  <g id="study-graph-1-patch_1">
+   <path d="M 0 295.2 
+L 460.8 295.2 
+L 460.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="study-graph-1-axes_1">
+   <g id="study-graph-1-patch_2">
+    <path d="M 47.307115 270.58601 
+L 457.79976 270.58601 
+L 457.79976 35.15774 
+L 47.307115 35.15774 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="study-graph-1-matplotlib.axis_1">
+    <g id="study-graph-1-xtick_1">
+     <g id="study-graph-1-line2d_1"/>
+     <g id="study-graph-1-text_1">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #626573" x="104.468068" y="289.704135" transform="rotate(-0 104.468068 289.704135)">Session 1</text>
+     </g>
+    </g>
+    <g id="study-graph-1-xtick_2">
+     <g id="study-graph-1-line2d_2"/>
+     <g id="study-graph-1-text_2">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #626573" x="252.553438" y="289.704135" transform="rotate(-0 252.553438 289.704135)">Session 2</text>
+     </g>
+    </g>
+    <g id="study-graph-1-xtick_3">
+     <g id="study-graph-1-line2d_3"/>
+     <g id="study-graph-1-text_3">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #626573" x="400.638807" y="289.704135" transform="rotate(-0 400.638807 289.704135)">Session 3</text>
+     </g>
+    </g>
+   </g>
+   <g id="study-graph-1-matplotlib.axis_2">
+    <g id="study-graph-1-ytick_1">
+     <g id="study-graph-1-line2d_4">
+      <path d="M 47.307115 270.58601 
+L 457.79976 270.58601 
+" clip-path="url(#study-graph-1-pe82ce926ca)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-1-line2d_5"/>
+     <g id="study-graph-1-text_4">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="275.145072" transform="rotate(-0 37.307115 275.145072)">0%</text>
+     </g>
+    </g>
+    <g id="study-graph-1-ytick_2">
+     <g id="study-graph-1-line2d_6">
+      <path d="M 47.307115 218.035057 
+L 457.79976 218.035057 
+" clip-path="url(#study-graph-1-pe82ce926ca)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-1-line2d_7"/>
+     <g id="study-graph-1-text_5">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="222.594119" transform="rotate(-0 37.307115 222.594119)">25%</text>
+     </g>
+    </g>
+    <g id="study-graph-1-ytick_3">
+     <g id="study-graph-1-line2d_8">
+      <path d="M 47.307115 165.484104 
+L 457.79976 165.484104 
+" clip-path="url(#study-graph-1-pe82ce926ca)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-1-line2d_9"/>
+     <g id="study-graph-1-text_6">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="170.043166" transform="rotate(-0 37.307115 170.043166)">50%</text>
+     </g>
+    </g>
+    <g id="study-graph-1-ytick_4">
+     <g id="study-graph-1-line2d_10">
+      <path d="M 47.307115 112.933151 
+L 457.79976 112.933151 
+" clip-path="url(#study-graph-1-pe82ce926ca)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-1-line2d_11"/>
+     <g id="study-graph-1-text_7">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="117.492213" transform="rotate(-0 37.307115 117.492213)">75%</text>
+     </g>
+    </g>
+    <g id="study-graph-1-ytick_5">
+     <g id="study-graph-1-line2d_12">
+      <path d="M 47.307115 60.382198 
+L 457.79976 60.382198 
+" clip-path="url(#study-graph-1-pe82ce926ca)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-1-line2d_13"/>
+     <g id="study-graph-1-text_8">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="64.94126" transform="rotate(-0 37.307115 64.94126)">100%</text>
+     </g>
+    </g>
+   </g>
+   <g id="study-graph-1-patch_3">
+    <path d="M 65.965872 270.58601 
+L 142.970264 270.58601 
+L 142.970264 60.382198 
+L 65.965872 60.382198 
+z
+" clip-path="url(#study-graph-1-pe82ce926ca)" style="fill: #702566"/>
+   </g>
+   <g id="study-graph-1-patch_4">
+    <path d="M 214.051241 270.58601 
+L 291.055634 270.58601 
+L 291.055634 100.951533 
+L 214.051241 100.951533 
+z
+" clip-path="url(#study-graph-1-pe82ce926ca)" style="fill: #702566"/>
+   </g>
+   <g id="study-graph-1-patch_5">
+    <path d="M 362.136611 270.58601 
+L 439.141003 270.58601 
+L 439.141003 108.098463 
+L 362.136611 108.098463 
+z
+" clip-path="url(#study-graph-1-pe82ce926ca)" style="fill: #702566"/>
+   </g>
+   <g id="study-graph-1-text_9">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #702566" x="104.468068" y="52.21554" transform="rotate(-0 104.468068 52.21554)">100.0%</text>
+   </g>
+   <g id="study-graph-1-text_10">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #702566" x="252.553438" y="92.784876" transform="rotate(-0 252.553438 92.784876)">80.7%</text>
+   </g>
+   <g id="study-graph-1-text_11">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #702566" x="400.638807" y="99.931805" transform="rotate(-0 400.638807 99.931805)">77.3%</text>
+   </g>
+   <g id="study-graph-1-text_12">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #20212b" x="47.307115" y="15.15774" transform="rotate(-0 47.307115 15.15774)">Explanations presented</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="study-graph-1-pe82ce926ca">
+   <rect x="47.307115" y="35.15774" width="410.492645" height="235.42827"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption>88 incident opportunities in each session. Descriptive percentages.</figcaption></figure><figure><svg role="img" aria-label="Requests for more detail: Session 1, 30.7 percent, Session 2, 62.0 percent, Session 3, 60.3 percent" xmlns:xlink="http://www.w3.org/1999/xlink" width="460.8pt" height="295.2pt" viewBox="0 0 460.8 295.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-16T12:00:48.121997</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="study-graph-2-figure_1">
+  <g id="study-graph-2-patch_1">
+   <path d="M 0 295.2 
+L 460.8 295.2 
+L 460.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="study-graph-2-axes_1">
+   <g id="study-graph-2-patch_2">
+    <path d="M 47.307115 270.58601 
+L 457.79976 270.58601 
+L 457.79976 35.15774 
+L 47.307115 35.15774 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="study-graph-2-matplotlib.axis_1">
+    <g id="study-graph-2-xtick_1">
+     <g id="study-graph-2-line2d_1"/>
+     <g id="study-graph-2-text_1">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #626573" x="104.468068" y="289.704135" transform="rotate(-0 104.468068 289.704135)">Session 1</text>
+     </g>
+    </g>
+    <g id="study-graph-2-xtick_2">
+     <g id="study-graph-2-line2d_2"/>
+     <g id="study-graph-2-text_2">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #626573" x="252.553438" y="289.704135" transform="rotate(-0 252.553438 289.704135)">Session 2</text>
+     </g>
+    </g>
+    <g id="study-graph-2-xtick_3">
+     <g id="study-graph-2-line2d_3"/>
+     <g id="study-graph-2-text_3">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #626573" x="400.638807" y="289.704135" transform="rotate(-0 400.638807 289.704135)">Session 3</text>
+     </g>
+    </g>
+   </g>
+   <g id="study-graph-2-matplotlib.axis_2">
+    <g id="study-graph-2-ytick_1">
+     <g id="study-graph-2-line2d_4">
+      <path d="M 47.307115 270.58601 
+L 457.79976 270.58601 
+" clip-path="url(#study-graph-2-pacacacf27c)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-2-line2d_5"/>
+     <g id="study-graph-2-text_4">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="275.145072" transform="rotate(-0 37.307115 275.145072)">0%</text>
+     </g>
+    </g>
+    <g id="study-graph-2-ytick_2">
+     <g id="study-graph-2-line2d_6">
+      <path d="M 47.307115 218.035057 
+L 457.79976 218.035057 
+" clip-path="url(#study-graph-2-pacacacf27c)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-2-line2d_7"/>
+     <g id="study-graph-2-text_5">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="222.594119" transform="rotate(-0 37.307115 222.594119)">25%</text>
+     </g>
+    </g>
+    <g id="study-graph-2-ytick_3">
+     <g id="study-graph-2-line2d_8">
+      <path d="M 47.307115 165.484104 
+L 457.79976 165.484104 
+" clip-path="url(#study-graph-2-pacacacf27c)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-2-line2d_9"/>
+     <g id="study-graph-2-text_6">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="170.043166" transform="rotate(-0 37.307115 170.043166)">50%</text>
+     </g>
+    </g>
+    <g id="study-graph-2-ytick_4">
+     <g id="study-graph-2-line2d_10">
+      <path d="M 47.307115 112.933151 
+L 457.79976 112.933151 
+" clip-path="url(#study-graph-2-pacacacf27c)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-2-line2d_11"/>
+     <g id="study-graph-2-text_7">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="117.492213" transform="rotate(-0 37.307115 117.492213)">75%</text>
+     </g>
+    </g>
+    <g id="study-graph-2-ytick_5">
+     <g id="study-graph-2-line2d_12">
+      <path d="M 47.307115 60.382198 
+L 457.79976 60.382198 
+" clip-path="url(#study-graph-2-pacacacf27c)" style="fill: none; stroke: #e2e3e9; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="study-graph-2-line2d_13"/>
+     <g id="study-graph-2-text_8">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #626573" x="37.307115" y="64.94126" transform="rotate(-0 37.307115 64.94126)">100%</text>
+     </g>
+    </g>
+   </g>
+   <g id="study-graph-2-patch_3">
+    <path d="M 65.965872 270.58601 
+L 142.970264 270.58601 
+L 142.970264 206.05344 
+L 65.965872 206.05344 
+z
+" clip-path="url(#study-graph-2-pacacacf27c)" style="fill: #237d78"/>
+   </g>
+   <g id="study-graph-2-patch_4">
+    <path d="M 214.051241 270.58601 
+L 291.055634 270.58601 
+L 291.055634 140.259646 
+L 214.051241 140.259646 
+z
+" clip-path="url(#study-graph-2-pacacacf27c)" style="fill: #237d78"/>
+   </g>
+   <g id="study-graph-2-patch_5">
+    <path d="M 362.136611 270.58601 
+L 439.141003 270.58601 
+L 439.141003 143.833111 
+L 362.136611 143.833111 
+z
+" clip-path="url(#study-graph-2-pacacacf27c)" style="fill: #237d78"/>
+   </g>
+   <g id="study-graph-2-text_9">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #237d78" x="104.468068" y="197.886782" transform="rotate(-0 104.468068 197.886782)">30.7%</text>
+   </g>
+   <g id="study-graph-2-text_10">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #237d78" x="252.553438" y="132.092988" transform="rotate(-0 252.553438 132.092988)">62.0%</text>
+   </g>
+   <g id="study-graph-2-text_11">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #237d78" x="400.638807" y="135.666453" transform="rotate(-0 400.638807 135.666453)">60.3%</text>
+   </g>
+   <g id="study-graph-2-text_12">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #20212b" x="47.307115" y="15.15774" transform="rotate(-0 47.307115 15.15774)">Requests for more detail</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="study-graph-2-pacacacf27c">
+   <rect x="47.307115" y="35.15774" width="410.492645" height="235.42827"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption>Presented explanations: n = 88, 71, 68. Descriptive percentages.</figcaption></figure></div>
+<p><strong>These charts have different denominators.</strong> Provision uses all incident opportunities. Detail preferences use only explanations that were presented and rated. Suppressed explanations could not be rated, so reduced provision is not evidence of reduced overall explanation demand.</p>
+<details><summary>Exact values and sources</summary><div class="table-scroll"><table><thead><tr><th scope="col">Measure</th><th scope="col">Session 1</th><th scope="col">Session 2</th><th scope="col">Session 3</th></tr></thead><tbody><tr><th scope="row">Explanations presented / opportunities</th><td>88/88 (100.0%)</td><td>71/88 (80.7%)</td><td>68/88 (77.3%)</td></tr><tr><th scope="row">Low-criticality provision</th><td>44/44 (100.0%)</td><td>30/44 (68.2%)</td><td>25/44 (56.8%)</td></tr><tr><th scope="row">High-criticality provision</th><td>44/44 (100.0%)</td><td>41/44 (93.2%)</td><td>43/44 (97.7%)</td></tr><tr><th scope="row">“More detail” among presented explanations</th><td>30.7% (n = 88)</td><td>62.0% (n = 71)</td><td>60.3% (n = 68)</td></tr></tbody></table></div><p>Source: follow-up manuscript, Table 3 (p. 12) and Section 5.3 (p. 14). Graphs redraw the reported aggregate percentages; they do not estimate uncertainty or reconstruct participant-level data.</p></details>
+<h3>What the findings suggest</h3>
+<div class="findings"><article><h4>Adapt selectively</h4><p>In Session 3, the system explained 56.8% of low-criticality incidents and 97.7% of high-criticality incidents. The reduction was concentrated in lower-criticality situations.</p></article><article><h4>Prioritize the “why”</h4><p>Interviewees valued the cause of an action more than a description of behaviour they could already see. Requests for detail point toward useful causal information, not simply longer messages.</p></article><article><h4>Keep the two decisions separate</h4><p>Frequency preferences among presented explanations showed no overall session effect. Participants could request fewer future explanations while wanting the current explanation to be more informative.</p></article></div>
+<details><summary>Additional checks of the explanation system</summary><p>A repeatability check submitted 50 prompts 20 times each. Mean agreement with each prompt’s majority provision decision was 94.3%, while repeated calls matched the original study decision in 69.7% of cases. These are distinct measures; neither establishes factual correctness.</p><p>In a separate evaluation, 14 raters contributed 280 substantive ratings. Requested increases in detail were perceived in the intended direction in 86.7% of ratings, and decreases in 85.6%. Mean plausibility was 6.19 out of 7. These checks assess perceived adaptation and plausibility, not causal benefit or a factual audit.</p><p>Source: Sections 3.5–3.6 and 5.7 of the follow-up manuscript.</p></details>
+<h3>How far can we take this?</h3>
+<p>The study was exploratory: 11 relatively young participants, three sessions, and a simulated passenger experience. Everyone received full provision first, followed by adaptation; there was no group receiving continued full provision. Session differences therefore combine adaptation, repeated exposure, and order.</p>
+<p>Trust showed no detectable change across sessions. This does not demonstrate that adaptation improved trust. Ratings of presented explanations also cannot tell us whether a suppressed explanation would have been wanted.</p>
+<div class="note"><strong>Design implication</strong><p>Personalization should decide <em>when an explanation is useful</em> separately from <em>what information it should contain</em>, while allowing passengers to revise their preferences.</p></div>
+<p class="source">Source: <em>When to Explain and What to Say: Longitudinal Preferences for Adaptive Explanations in Automated Driving</em>, unpublished manuscript supplied by the author, 23 pages.</p>
+</section>
+
     <section id="paper" class="paper-section section" aria-labelledby="paper-title"><div class="section-wrap">
-      <div class="section-heading"><div><p class="eyebrow">04 / The full paper</p><h2 id="paper-title">The details, in full.</h2></div><div class="paper-actions"><a class="button primary" href="./assets/documents/paper.pdf" target="_blank" rel="noopener">Open PDF <span aria-hidden="true">↗</span></a><a class="button secondary" href="./assets/documents/paper.pdf" download>Download paper <span aria-hidden="true">↓</span></a></div></div>
+      <div class="section-heading"><div><p class="eyebrow">05 / The AutoUI paper</p><h2 id="paper-title">The details, in full.</h2></div><div class="paper-actions"><a class="button primary" href="./assets/documents/paper.pdf" target="_blank" rel="noopener">Open PDF <span aria-hidden="true">↗</span></a><a class="button secondary" href="./assets/documents/paper.pdf" download>Download paper <span aria-hidden="true">↓</span></a></div></div>
       <div class="paper-meta"><div><h3>Exploring the Design Space of Adaptive Explanations in Automated Vehicles</h3><p>AutomotiveUI 2026 Work-in-Progress · 8 pages · Submitted manuscript</p></div><a class="text-link" href="./assets/documents/poster-a0.pdf" target="_blank" rel="noopener">View the A0 poster ↗</a></div>
       <div class="pdf-shell"><div class="pdf-toolbar"><span><span class="pdf-dot" aria-hidden="true"></span> Research manuscript</span><span>PDF</span></div><object class="pdf-viewer" data="./assets/documents/paper.pdf#view=FitH" type="application/pdf" aria-label="Full eight-page research paper"><div class="pdf-fallback"><img src="./assets/images/paper-page.png" alt="First page of the research manuscript." width="506" height="655" loading="lazy"><p>Your browser cannot display this PDF here.</p><a class="button primary" href="./assets/documents/paper.pdf" target="_blank" rel="noopener">Open the full paper ↗</a></div></object><div class="pdf-mobile"><img src="./assets/images/paper-page.png" alt="Preview of the research manuscript." width="506" height="655" loading="lazy"><a class="button primary" href="./assets/documents/paper.pdf" target="_blank" rel="noopener">Read the full PDF ↗</a></div></div>
     </div></section>
