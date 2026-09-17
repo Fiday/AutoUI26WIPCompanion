@@ -161,3 +161,32 @@ h1 em { letter-spacing: -.035em; }
     margin-left: 0;
   }
 }
+
+/* Session 1 incident library and supplied explanation audio. */
+.session-intro { padding: 0 0 24px; max-width: 880px; }
+.session-intro strong { color: var(--plum-dark); font-size: 1.1rem; }
+.session-intro p { color: var(--muted); margin-top: 7px; }
+.incident-selector { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+.incident-selector button { display: flex; align-items: baseline; gap: 10px; text-align: left; min-height: 68px; padding: 12px; font-size: .875rem; line-height: 1.45; }
+.incident-button-number { flex-shrink: 0; font-weight: 700; opacity: .8; }
+.incident-button-title { min-width: 0; }
+.incident-audio { padding: 20px; margin-top: 22px; background: white; border: 1px solid #ddd7e2; border-radius: var(--radius); }
+.audio-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.audio-heading h4 { font-size: 1rem; }
+.audio-heading a { color: var(--plum); font-size: .875rem; }
+.incident-audio audio { display: block; width: 100%; min-width: 0; }
+.incident-audio [role=status] { margin-top: 10px; color: var(--muted); font-size: .875rem; }
+.incident-prompt { margin-top: 24px; border-top: 1px solid #ddd7e2; padding-top: 17px; min-width: 0; }
+.incident-prompt summary { cursor: pointer; color: var(--plum); font-size: .9375rem; font-weight: 600; }
+.incident-prompt h4 { margin: 18px 0 8px; font-size: .875rem; }
+.incident-prompt p { color: var(--muted); font-size: .9375rem; }
+.incident-prompt pre { white-space: pre-wrap; overflow-wrap: anywhere; font: .875rem/1.65 ui-monospace,Consolas,monospace; padding: 16px; background: white; border: 1px solid var(--line); border-radius: var(--radius); max-height: 420px; overflow: auto; }
+.no-script article { margin-top: 24px; }
+.no-script audio { width: 100%; margin-top: 12px; }
+@media(max-width:1000px) { .incident-selector { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:580px) {
+ .incident-selector button { padding: 10px; gap: 7px; min-height: 70px; }
+ .incident-audio { padding: 16px 12px; }
+ .incident-prompt pre { padding: 12px; }
+ .incident-media .media-pending strong { max-width: 100%; font-size: .9375rem; }
+}

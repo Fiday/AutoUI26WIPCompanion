@@ -56,9 +56,38 @@
   document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
   document.addEventListener('click', event => { if (!nav.contains(event.target) && !menu.contains(event.target)) closeMenu(); });
 
+  const audioPlayer = $('incident-audio');
+  let stopVideo = () => {};
+  if (audioPlayer) {
+    audioPlayer.addEventListener('play', () => stopVideo());
+    audioPlayer.addEventListener('error', () => {
+      $('incident-audio-status').textContent = 'The recording could not be loaded. Try the MP3 download link.';
+      $('incident-audio-status').hidden = false;
+    });
+  }
   function showIncident(incident, index) {
+    if (audioPlayer) {
+      audioPlayer.pause();
+      audioPlayer.removeAttribute('src');
+      audioPlayer.load();
+      $('incident-audio-panel').hidden = !incident.audioUrl;
+      $('incident-audio-status').hidden = true;
+      if (incident.audioUrl) {
+        audioPlayer.src = incident.audioUrl;
+        audioPlayer.setAttribute('aria-label', 'Session 1, incident ' + (index + 1) + ': ' + incident.title);
+        const download = $('incident-audio-download');
+        download.href = incident.audioUrl;
+        download.download = 'session-1-incident-' + (index + 1) + '.mp3';
+      }
+    }
+    stopVideo = () => {};
+    $('incident-prompt-panel').open = false;
+    $('incident-prompt-panel').hidden = !incident.prompt;
+    $('incident-prompt-text').textContent = incident.prompt || '';
+    $('incident-voice-instructions').textContent = incident.voiceInstructions || '';
+
     Array.from($('incident-selector').children).forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
-    $('incident-index').textContent = 'Incident ' + String(index + 1).padStart(2, '0');
+    $('incident-index').textContent = 'Session 1 / Incident ' + String(index + 1).padStart(2, '0');
     $('incident-title').textContent = incident.title;
     $('incident-event').textContent = incident.event;
     $('incident-response').textContent = incident.response;
@@ -66,6 +95,7 @@
     $('incident-explanation').hidden = !incident.explanation;
     $('incident-source').textContent = incident.source || '';
     $('incident-tags').replaceChildren(...(incident.context || []).map(tag => make('span', '', tag)));
+    const video = youtubeId(incident.youtubeUrl);
     const media = $('incident-media');
     media.replaceChildren();
     if (incident.image) {
@@ -73,14 +103,13 @@
       img.width = 1851; img.height = 1041; media.append(img);
     } else {
       const pending = make('div', 'media-pending');
-      pending.append(make('span', 'event-mark', String(index + 1).padStart(2, '0')), make('strong', '', incident.title), make('p', '', 'Scenario described in the manuscript'));
+      pending.append(make('span', 'event-mark', String(index + 1).padStart(2, '0')), make('strong', '', incident.title), make('p', '', video ? 'Session 1 · Simulator recording' : 'Session 1 · No video available'));
       media.append(pending);
     }
-    const video = youtubeId(incident.youtubeUrl);
     const caption = $('media-caption');
     caption.textContent = video ? (incident.videoCaption || 'Simulator recording · ' + incident.title) : incident.caption;
     if (!video) {
-      media.append(make('span', 'still-label', incident.image ? 'SIMULATION STILL' : 'VIDEO FORTHCOMING'));
+      media.append(make('span', 'still-label', incident.image ? 'SIMULATION STILL' : 'NO VIDEO AVAILABLE'));
       return;
     }
     const watch = make('a', '', 'Watch on YouTube ↗');
@@ -92,6 +121,9 @@
     play.append(icon, make('strong', '', 'Play incident video'), make('small', '', 'Loads YouTube when selected'));
     media.append(play);
     play.addEventListener('click', () => {
+      if (audioPlayer) audioPlayer.pause();
+      const preview = Array.from(media.childNodes);
+      stopVideo = () => { media.replaceChildren(...preview); stopVideo = () => {}; };
       const iframe = make('iframe');
       const start = Math.max(0, Math.floor(Number(incident.startSeconds) || 0));
       iframe.src = 'https://www.youtube-nocookie.com/embed/' + video + '?autoplay=1&rel=0&start=' + start;
@@ -102,7 +134,9 @@
     });
   }
   (content.incidents || []).forEach((incident, index) => {
-    const button = make('button', '', String(index + 1).padStart(2, '0') + ' / ' + incident.title);
+    const button = make('button');
+    button.append(make('span', 'incident-button-number', String(index + 1).padStart(2, '0')), make('span', 'incident-button-title', incident.title));
+    button.setAttribute('aria-controls', 'incident-view');
     button.type = 'button'; button.setAttribute('aria-pressed', 'false');
     button.addEventListener('click', () => showIncident(incident, index));
     $('incident-selector').append(button);
